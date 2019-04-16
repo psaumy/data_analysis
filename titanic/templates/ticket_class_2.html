@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ticket Class 2</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+</head>
+<body>
+<div id="container"></div>
+<script src="https://code.highcharts.com/highcharts.src.js"></script>
+<script>
+  Highcharts.chart('container', {
+      chart: {
+          type: 'column'
+      },
+      title: {
+          text: 'CUSTOM CHART'
+      },
+      xAxis: {
+          categories: {{ categories|safe }}
+      },
+      series: [{
+          name: 'CYL1',
+          data: {{ cyl1 }},
+          color: 'green'
+      }, {
+          name: 'CLY2',
+          data: {{ cyl2 }},
+          color: 'red'
+      }, {
+          name: 'CYL3',
+          data: {{ cyl3 }},
+          color: 'blue'
+      }]
+  });
+</script>
+
+<table class="table">
+{% for row in field %}
+            <tr>
+                {% for value in row %}
+                    <td>{{value|upper}}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+</table>
+
+
+</body>
+</html>

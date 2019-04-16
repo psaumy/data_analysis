@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Embarked</title>
+</head>
+<body>
+<div id="container"></div>
+<script src="https://code.highcharts.com/highcharts.src.js"></script>
+<script>
+  Highcharts.chart('container', {
+      chart: {
+          type: 'column'
+      },
+      title: {
+          text: 'Titanic Survivors by Port'
+      },
+      xAxis: {
+          categories: {{ embarked|safe }}
+      },
+      series: [{
+          name: 'Survived',
+          data: {{ survived_series }},
+          color: 'green'
+      }, {
+          name: 'Not survived',
+          data: {{ not_survived_series }},
+          color: 'red'
+      }]
+  });
+</script>
+
+</body>
+</html>
